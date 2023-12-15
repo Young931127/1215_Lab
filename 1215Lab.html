@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Comparison</title>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+        }
+
+        input {
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <input type="number" id="input1" placeholder="Enter 1st number">
+    <input type="number" id="input2" placeholder="Enter 2nd number">
+    
+    <button onclick="compareInputs(1)">Click the 1st button</button>
+    <button onclick="compareInputs(2)">Click the 2nd button</button>
+
+    <div id="result"></div>
+
+    <script>
+        function compareInputs(buttonNumber) {
+            var input1 = parseFloat(document.getElementById('input1').value);
+            var input2 = parseFloat(document.getElementById('input2').value);
+            var resultDiv = document.getElementById('result');
+
+            if (isNaN(input1) || isNaN(input2)) {
+                resultDiv.innerHTML = "Please enter valid numbers.";
+                return;
+            }
+
+            if (buttonNumber === 1) {
+                if (input1 > input2) {
+                    document.body.style.backgroundColor = 'lightblue';
+                    resultDiv.innerHTML = input1 + " > " + input2;
+                } else if (input1 < input2) {
+                    document.body.style.backgroundColor = 'orange';
+                    resultDiv.innerHTML = input1 + " < " + input2;
+                } else {
+                    document.body.style.backgroundColor = 'lightyellow';
+                    resultDiv.innerHTML = input1 + " = " + input2;
+                }
+            } else if (buttonNumber === 2) {
+                if (input2 > input1) {
+                    document.body.style.backgroundColor = 'orange';
+                    resultDiv.innerHTML = input2 + " > " + input1;
+                } else if (input2 < input1) {
+                    document.body.style.backgroundColor = 'lightblue';
+                    resultDiv.innerHTML = input2 + " < " + input1;
+                } else {
+                    document.body.style.backgroundColor = 'lightyellow';
+                    resultDiv.innerHTML = input2 + " = " + input1;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
